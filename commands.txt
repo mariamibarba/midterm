@@ -1,0 +1,19 @@
+# 1. პროექტის შექმნა uv-ით
+uv init --bare --name midterm --python 3.12
+
+# 2. დამოკიდებულებების დამატება (pyproject.toml და uv.lock იქმნება/ახლდება)
+uv add pytest pytest-playwright pytest-html
+
+# 3. Playwright ბრაუზერის (Chromium) ინსტალაცია
+uv run playwright install chromium
+
+# 4. ყველა ტესტის გაშვება და HTML რეპორტის შექმნა
+uv run pytest -v --html=report.html --self-contained-html
+
+# (სურვილისამებრ) ტესტების ბრაუზერის ფანჯრით ნახვა
+uv run pytest --headed
+
+# (სურვილისამებრ) მხოლოდ ერთი დავალების გაშვება, მაგ. დავალება 3
+uv run pytest tests/test_task3_cart_badge.py -v
+
+# შედეგი: 9 passed (დავალება 3 → 3 passed)
